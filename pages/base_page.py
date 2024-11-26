@@ -42,7 +42,8 @@ class BasePage:
             return True
         return False
 
-    # проверить, что какой-то элемент исчезает
+    # проверяет, исчез ли элемент с указанным локатором за заданное время.
+    # Если элемент исчез, метод возвращает True. Если нет — возвращает False.
     def is_disappeared(self, locator, timeout=4):
         try:
             WebDriverWait(self.browser, timeout, 1, TimeoutException). \
