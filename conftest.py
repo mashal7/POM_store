@@ -12,6 +12,7 @@ def browser(request):
 
     # Настройка языка для Chrome
     options = Options()
+    #options.add_experimental_option('detach', True)
     options.add_experimental_option('prefs', {'intl.accept_languages': user_language})
     browser = webdriver.Chrome(options=options)
 
