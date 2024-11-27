@@ -1,6 +1,4 @@
 import math
-import time
-
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchElementException, NoAlertPresentException, TimeoutException
 from selenium.webdriver.support.wait import WebDriverWait
@@ -53,16 +51,21 @@ class BasePage:
 
         return True
 
+    def should_be_authorized_user(self):
+        assert self.is_element_present(BasePageLocators.USER_ICON), "User icon is not presented," \
+                                                                    " probably unauthorised user"
+
+    # для сравнения текста двух локаторов
     def compare_text(self, locator1, locator2):
         text1 = self.browser.find_element(*locator1).text
         text2 = self.browser.find_element(*locator2).text
         return True if text1 == text2 else False
 
-    def should_be_authorized_user(self):
-        assert self.is_element_present(BasePageLocators.USER_ICON), "User icon is not presented," \
-                                                                     " probably unauthorised user"
+
 
     def solve_quiz_and_get_code(self):
+        '''Для решения уравнения и отправки кода в alert'''
+
         alert = self.browser.switch_to.alert
         x = alert.text.split(" ")[2]
         answer = str(math.log(abs((12 * math.sin(float(x))))))

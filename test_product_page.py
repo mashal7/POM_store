@@ -93,7 +93,7 @@ def test_guest_cant_see_success_message_after_adding_product_to_basket(browser):
 
 @pytest.mark.xfail(reason="must be negative test")
 def test_message_disappeared_after_adding_product_to_basket(browser):
-    '''Тест: проверка, что нет сообщения об успехе после добавления товара в корзину
+    '''Негативный Тест: проверка, что нет сообщения об успехе после добавления товара в корзину
     (будет ждать до тех пор, пока элемент не исчезнет)'''
 
     link = 'http://selenium1py.pythonanywhere.com/catalogue/the-shellcoders-handbook_209/?promo=newYear'
